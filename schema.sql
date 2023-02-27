@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS posts;
+CREATE TABLE posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS transactions;
+CREATE TABLE transactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    amount REAL NOT NULL,
+    transaction_type TEXT NOT NULL,
+    created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(transaction_type) REFERENCES transaction_type(name)
+);
+
+DROP TABLE IF EXISTS transaction_type;
+CREATE TABLE transaction_type (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL
+);
+
